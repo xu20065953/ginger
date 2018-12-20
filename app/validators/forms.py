@@ -2,12 +2,13 @@
 # @Author : jjxu
 # @time: 2018/12/15 18:45
 
-from wtforms import Form, IntegerField, StringField
+from wtforms import IntegerField, StringField
 from wtforms.validators import DataRequired, Length, Email, Regexp
 from wtforms import ValidationError
 
 from app.libs.enums import ClientTypeEnum
 from app.models.user import User
+from app.validators.base import BaseForm as Form
 
 
 class ClientForm(Form):
