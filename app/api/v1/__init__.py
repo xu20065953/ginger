@@ -3,7 +3,7 @@
 # @time: 2018/12/15 17:12
 
 from flask import Blueprint
-from app.api.v1 import user, client
+from app.api.v1 import user, client, token
 
 
 def create_blueprint_v1():
@@ -11,6 +11,7 @@ def create_blueprint_v1():
 
     user.api.register(blueprint_v1, url_prefix="/user")
     client.api.register(blueprint_v1, url_prefix="/client")
+    token.api.register(blueprint_v1, url_prefix="/token")
 
     return blueprint_v1
 

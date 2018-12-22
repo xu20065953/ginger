@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Test</h1>
+    <p id="content"></p>
+<script>
+    $.ajax({
+        url: "http://localhost:5000/v1/user/3",
+        type: "get",
+        headers: {
+            "Authorization": "Basic ZXlKaGJHY2lPaUpJVXpVeE1pSXNJbWxoZENJNk1UVTBOVFEzTlRneU9Td2laWGh3SWpveE5UUTFOVFl5TWpJNWZRLmV5SjFhV1FpT2pNc0luUjVjR1VpT2pFd01Dd2ljMk52Y0dVaU9pSWlmUS5kWFpKdUFJZGpLWU1XUlFGMnlveGNLTWdENDMyMnF0REpGVjB4MDJKSE1Edkg4Q2NxYVYwVFA4UkctVllnczU2UDAwMUJrRXg1a05zbnJBNGRKU3BFdzo="
+        },
+        success: function (data) {
+            $("#content").html(data.id + "--" + data.nickname)
+        }
+    })
+</script>
+</body>
+</html>

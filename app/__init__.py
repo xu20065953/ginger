@@ -2,7 +2,8 @@
 # @Author : jjxu
 # @time: 2018/12/15 16:37
 
-from flask import Flask
+# from flask import Flask
+from app.app import Flask
 from app.api.v1 import create_blueprint_v1
 
 

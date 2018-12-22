@@ -38,6 +38,10 @@ class UserEmailForm(ClientForm):
             raise ValidationError(message="账号已注册")
 
 
+class TokenForm(Form):
+    token = StringField(validators=[DataRequired()])
+
+
 
 
 

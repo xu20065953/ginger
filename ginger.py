@@ -9,6 +9,7 @@ from app.libs.error_code import ServerError
 
 app = create_app()
 
+
 @app.errorhandler(Exception)
 def framework_error(e):
     if isinstance(e, ApiException):

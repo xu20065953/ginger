@@ -40,8 +40,26 @@ class Success(ApiException):
     error_code = 1
 
 
+class DeleteSuccess(Success):
+    code = 202
+    msg = "ok"
+    error_code = 0
+
+
 class ServerError(ApiException):
     code = 500
     msg = 'sorry, 发生了一些未知的错误!'
     error_code = 999
+
+
+class AuthFailed(ApiException):
+    code = 401
+    msg = '未授权...'
+    error_code = 1005
+
+
+class NotFound(ApiException):
+    code = 404
+    msg = 'the resource are not found O__O...'
+    error_code = 1001
 
