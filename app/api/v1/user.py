@@ -24,8 +24,16 @@ def super_get_user(uid):
     return jsonify(user)
 
 
+@api.route("", methods=["GET"])
+@auth.login_required
+def get_user():
+    uid = g.user.uid
+    user = User.query.filter_by(id=uid).first_or_404()
+    return jsonify(user)
+
+
 # 注销用户自己
-@api.route("/delete", methods=["POST"])
+@api.route("/delete", methods=["DELETE"])
 @auth.login_required
 def delete_user():
     uid = g.user.uid

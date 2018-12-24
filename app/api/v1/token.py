@@ -48,7 +48,6 @@ def get_token_info():
     return jsonify(r)
 
 
-
 def generate_auth_token(uid, ac_type, scope=None, expiration=7200):
     """生成Token令牌"""
     s = Serializer(current_app.config["SECRET_KEY"], expires_in=expiration)

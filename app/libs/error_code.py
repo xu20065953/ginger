@@ -63,3 +63,9 @@ class NotFound(ApiException):
     msg = 'the resource are not found O__O...'
     error_code = 1001
 
+
+class Forbidden(ApiException):
+    code = 403
+    msg = '您没有权限访问'
+    error_code = 1004
+
