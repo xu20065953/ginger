@@ -52,6 +52,10 @@ class Base(db.Model):
     def __init__(self):
         self.create_time = int(datetime.now().timestamp())
 
+    # json 序列化方法重写
+    def __getitem__(self, item):
+        return getattr(self, item)
+
     @property
     def create_datetime(self):
         if self.create_time:
@@ -67,9 +71,23 @@ class Base(db.Model):
     def delete(self):
         self.status = 0
 
-    # json 序列化方法重写
-    def __getitem__(self, item):
-        return getattr(self, item)
+    # 需要被序列化的字段
+    def keys(self):
+        return self.fields
+
+    # 隐藏某个需要序列化字段
+    def hide(self, *keys):
+        for key in keys:
+            self.fields.remove(key)
+        return self
+
+    # 添加某个需要序列化字段
+    def append(self, *keys):
+        for key in keys:
+            self.fields.append(key)
+        return self
+
+
 
 
 

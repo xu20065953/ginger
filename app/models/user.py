@@ -2,7 +2,7 @@
 # @Author : jjxu
 # @time: 2018/12/15 18:31
 
-from sqlalchemy import Column, Integer, String, SmallInteger
+from sqlalchemy import Column, Integer, String, SmallInteger, orm
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from app.libs.error_code import AuthFailed
@@ -18,8 +18,12 @@ class User(Base):
     _password = Column("password", String(124))
 
     # 需要被序列化的字段
-    def keys(self):
-        return ['id', 'email', 'nickname', 'auth', 'age']
+    # def keys(self):
+    #     return ['id', 'email', 'nickname', 'auth', 'age']
+
+    @orm.reconstructor
+    def __init__(self):
+        self.fields = ['id', 'email', 'nickname', 'auth', 'age']
 
     @property
     def password(self):
